@@ -1,0 +1,62 @@
+-Select bs 'jsname'  pupeteer
+
+const puppeteer = require('puppeteer');
+
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+
+  await page.goto('https://example.com'); // Replace with the URL of the page you want to interact with
+
+  const elementsWithJsname = await page.evaluate(() => {
+    const jsnameSelector = 'your-custom-selector'; // Replace with the value you're looking for in the "jsname" attribute
+
+    // Use your custom selector here
+    const elements = document.querySelectorAll(`[jsname="${jsnameSelector}"]`);
+
+    // Convert the elements to an array of their attributes or other data as needed
+    const elementData = Array.from(elements).map((element) => {
+      return {
+        text: element.textContent,
+        href: element.getAttribute('href'),
+        // Add other properties as needed
+      };
+    });
+
+    return elementData;
+  });
+
+  console.log(elementsWithJsname);
+
+  await browser.close();
+})();
+
+
+
+----------------------------------------------------------------
+
+
+-Clear input field with pupeteer  
+
+To clear the content of an input field using Puppeteer, you can
+ use the page.$eval() function to select the input field and set its value to an empty string. Here's an example:
+
+
+
+const puppeteer = require('puppeteer');
+
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('https://example.com'); // Replace with the URL of the page you're working with
+
+  const inputSelector = 'input[type="text"]'; // Replace with the selector for your input field
+
+  // Use page.$eval to clear the input field
+  await page.$eval(inputSelector, (input) => {
+    input.value = ''; // Set the input field value to an empty string
+  });
+
+  // Close the browser
+  await browser.close();
+})();
