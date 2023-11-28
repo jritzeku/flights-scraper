@@ -1,7 +1,10 @@
 const puppeteer = require('puppeteer')
+
 const fs = require('fs')
 
 const getFlights = async () => {
+
+  //start puppeteer
   const browser = await puppeteer.launch({
     headless: false,
     defaultViewport: false,
@@ -10,13 +13,14 @@ const getFlights = async () => {
   const page = await browser.newPage()
   await page.setDefaultNavigationTimeout(0)
 
+  //goes to google flights with destination set to Hawaii, and date as well 
   await page.goto(
     'https://www.google.com/travel/flights?tfs=CBwQARolEgoyMDIzLTEwLTI2agcIARIDTVNQcg4IAxIKL20vMDJocmgwX0ABSAFwAYIBCwj___________8BmAEC&hl=en&gl=us&curr=USD',
     { waitUntil: 'networkidle2' }
   )
 
+  //grab the relevant elements to scrape from 
   let inputClass = ' TP4Lpb eoY5cb j0Ppje'
-
   let nextBtnClass = ' d53ede rQItBb FfP4Bc Gm3csc'
   let monthClass = ' Bc6Ryd ydXJud'
   let monthNameClass = ' BgYkof B5dqIf qZwLKe'
@@ -88,7 +92,7 @@ const getFlights = async () => {
 
       //we can only look up to 12 months ahead, then next button is is hidden
       if (date.split(' ')[1] == 'Sep' && dateNumber === '27') {
-        await page.waitForTimeout8(8000)
+        await page.waitForTimeout(8000)
         console.log('Last month reached')
         break
       }
