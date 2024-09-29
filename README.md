@@ -8,8 +8,8 @@ A web scraping application that scrapes flight data from google flights.
 This app is meant for learning/educational purposes only.
 &nbsp;
 This should cover most of the features/use cases.
-
-https://www.youtube.com/watch?v=miHOgs4JUGc
+ 
+https://youtu.be/KWuv7-Xhtd4
  
 
 ## How to run locally
