@@ -9,8 +9,7 @@ This app is meant for learning/educational purposes only.
 &nbsp;
 This should cover most of the features/use cases.
  
-https://youtu.be/KWuv7-Xhtd4
- 
+https://youtu.be/o8SE32O1qN8
 
 ## How to run locally
 
